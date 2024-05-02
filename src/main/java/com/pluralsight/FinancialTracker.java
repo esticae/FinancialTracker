@@ -329,7 +329,7 @@ private static void reportsMenu(Scanner scanner) {
                 // including the date, vendor, and amount for each transaction.
                 LocalDate today4 = LocalDate.now();
                 LocalDate startOfPreviousYear = today4.minusYears(1).withDayOfYear(1);
-                LocalDate endOfPreviousYear = today4.plusYears(1).withDayOfYear(today4.plusYears(1).lengthOfYear());
+                LocalDate endOfPreviousYear = today4.withDayOfYear(1); // Set to the first day of the current year
                 filterTransactionsByDate(startOfPreviousYear, endOfPreviousYear);
                 break;
             case "5":
