@@ -120,6 +120,7 @@ public class FinancialTracker {
         } catch (Exception e) {
             System.out.println("Invalid amount format. Please enter a valid number. " + e.getMessage());
         }
+        System.out.println("Deposit added succsfully!!");
         Transaction deposit = new Transaction(date, time, vendor, type, amount);
         transactions.add(deposit);
         BufferedWriter buff;
