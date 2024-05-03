@@ -161,8 +161,8 @@ public class FinancialTracker {
 
         try {
             amount = Double.parseDouble(scanner.nextLine());
-            if (amount < 0) {
-                System.out.println("Payment must be a positive number");
+            if (amount > 0) {
+                System.out.println("Payment must be a negative number");
             }
         } catch (Exception e) {
             System.out.println("Error getting payment " + e.getMessage());
@@ -172,6 +172,24 @@ public class FinancialTracker {
         }
         Transaction payment = new Transaction(date, time, vendor, type, amount);
         transactions.add(payment);
+
+
+        BufferedWriter buff;
+        try {
+            buff = new BufferedWriter(new FileWriter("transactions.csv", true));
+            buff.write(
+                    payment.getDate().toString() + "|" +
+                            payment.getTime() + "|" +
+                            payment.getType() + "|" +
+                            payment.getVendor() + "|" +
+                            payment.getAmount()
+            );
+            // Adding a new line after writing the transaction
+            buff.newLine();
+            buff.close(); // Don't forget to close the writer after writing
+        } catch (IOException e) {
+            System.out.println("Error writing to file: " + e.getMessage());
+        }
 
 
     }
